@@ -1,0 +1,109 @@
+/*
+Common
+*********************/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+.content {
+    max-width: 600px;
+    height: 100%;
+    margin: 0 auto;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+}
+
+/*
+Post
+*********************/
+
+.post_form {
+    padding: 20px 40px;
+    border-bottom: 1px solid #ccc;
+}
+
+.post_form input {
+    width: 96%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.post_form textarea {
+    width: 96%;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.posts ul {
+    padding: 0;
+}
+
+.posts li {
+    display: flex;
+    border-bottom: 1px solid #ccc;
+    padding: 20px 40px;
+    list-style: none;
+    position: relative;
+}
+
+.posts li .menu_icon {
+    width: 20px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.posts li .menu {
+    display: none;
+    position: absolute;
+    top: 40px;
+    right: 15px;
+    border: 1px solid #ccc;
+    background-color: white;
+    padding: 10px 15px;
+    font-size: 15px;
+    border-radius: 3px;
+}
+
+.posts li .menu a {
+    text-decoration: none;
+}
+
+.posts li .logo {
+    flex-basis: 40%;
+}
+
+.posts li .logo img {
+    border-radius: 50%;
+    padding: 0;
+    width: 40%;
+}
+
+.posts li .name_body {
+    flex-basis: 85%;
+    font-size: 20px;
+}
+
+.posts li .name_body .name {
+    font-weight: bold;
+}
+
+.posts li .name_body .datetime {
+    color: gray;
+}
+
+.hide {
+    display: none;
+}
+
+@media screen and (max-width: 500px) {
+    .posts li .name_body .name {
+        font-size: 20px;
+    }
+}

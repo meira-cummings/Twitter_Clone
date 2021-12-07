@@ -3,7 +3,7 @@ from django.db import models
 
 class Post(models.Model):
     class Meta(object):
-        db_table = 'post'
+        db_table = "post"
 
     name = models.CharField(
         'Name', blank=False, null=False, max_length=14, db_index=True, default='Anonymous'
