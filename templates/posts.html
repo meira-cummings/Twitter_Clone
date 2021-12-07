@@ -1,0 +1,10 @@
+{% extends "base.html" %} {% block content %}
+
+<section class="content">
+    <section class="post_forum">Post Form</section>
+    <section class="posts">
+        {% for post in posts %} {{ posts.name }} {% endfor %}
+    </section>
+</section>
+
+{ % endblock %}
