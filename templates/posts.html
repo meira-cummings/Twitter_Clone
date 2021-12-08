@@ -6,15 +6,19 @@
     </div>
 </section>
 <section class="content">
-    <section class="post_form">        
-        <img src="/static/img/user.png" class="my-icon" />
-        <form action="/" method="POST">
-            {% csrf_token %}
-            <input type="text" name="name" placeholder="Your Name" required />
-            <textarea name="body" placeholder="What's happening?" required></textarea>
-            <input type="submit" value="Tweet" />
-        </form>
+    <section class="post_form">
+        <img src="/static/img/user.png" class="my_icon" />
+            <form action="/" method="POST">
+                {% csrf_token %}
+                <input type="text" name="name" placeholder="Your Name" class="input" required />
+                <textarea name="body" placeholder="What's happening?" required></textarea>                
+                <div class="bottom-area">
+                    <input class="form-control form-control-sm" name="image" type="file" />                   
+                    <input type="submit" value="Tweet" id="tweet" />
+                </div>
+            </form>
     </section>
+    <div class="ditch"></div>
 
     <section class="posts">
         {% if tweets.count == 0 %}
@@ -33,9 +37,10 @@
                 <div class="name_body">
                     <div class="name">{{ post.name }}</div>
                     <div class="datetime">{{ post.created_at }}</div>
-                    <p>{{ post.body }}</p>
                     <a class="hide" href="/delete/{{ post.id }}/">delete</a>
-                </div>          
+                </div>
+                <p class="post_body">{{ post.body }}</p>
+                <img src="/static/img/heart.png" class="like_btn"/>          
             </li> 
             {% endfor %}
         </ul>
