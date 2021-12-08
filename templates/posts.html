@@ -1,6 +1,13 @@
 {% extends "base.html" %} {% block content %} {% load static %}
+<section class="main">
+    <div class="main-header">
+        <img src="/static/img/techis-logo.png" class="logo" />
+        <h1>Home</h1>
+    </div>
+</section>
 <section class="content">
-    <section class="post_form">
+    <section class="post_form">        
+        <img src="/static/img/user.png" class="my-icon" />
         <form action="/" method="POST">
             {% csrf_token %}
             <input type="text" name="name" placeholder="Your Name" required />

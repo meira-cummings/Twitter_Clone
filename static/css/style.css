@@ -10,6 +10,28 @@ html, body {
     height: 100%;
 }
 
+.main {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    text-align: left;
+}
+
+.main .main-header {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.main .main-header .logo {
+    width: 50px;
+    margin-right: 20px;
+}
+
 .content {
     max-width: 600px;
     height: 100%;
