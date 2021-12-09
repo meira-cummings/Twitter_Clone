@@ -13,7 +13,7 @@
                 <input type="text" name="name" placeholder="Your Name" class="input" required />
                 <textarea name="body" placeholder="What's happening?" required></textarea>                
                 <div class="bottom-area">
-                    <input class="form-control form-control-sm" name="image" type="file" />                   
+                    <input class="form-control form-control-sm" type="file" name="image">                   
                     <input type="submit" value="Tweet" id="tweet" />
                 </div>
             </form>
@@ -26,22 +26,30 @@
         {% else %}
         <ul>
             {% for post in posts %}
-            <li>
-                <img class="menu_icon js-menu-icon" src="{% static 'img/menu.png' %}" />
-                <div class="menu">
-                    <a href="/delete/{{ post.id }}/">Delete</a>
-                </div>
+            <li>               
                 <div class="logo">
                     <img src="{% static 'img/user.png' %}" />
-                </div>      
+                </div>                    
                 <div class="name_body">
-                    <div class="name">{{ post.name }}</div>
-                    <div class="datetime">{{ post.created_at }}</div>
-                    <a class="hide" href="/delete/{{ post.id }}/">delete</a>
-                </div>
+                    <span class="name">{{ post.name }}</span>
+                    <span class="datetime">{{ post.created_at }}</span>                    
+                </div>                
+                <img class="menu_icon js-menu-icon" src="{% static 'img/menu.png' %}" />
+                <div class="menu">
+                    <div>
+                        <a class="hide" href="/delete/{{ post.id }}/">delete</a>
+                        <a href="/delete/{{ post.id }}/">Delete</a>
+                    </div>
+                    <div>
+                        <a href="/edit/{{ post.id }}/">edit</a>
+                    </div>     
+                </div>                                    
                 <p class="post_body">{{ post.body }}</p>
-                <img src="/static/img/heart.png" class="like_btn"/>          
-            </li> 
+                <div class="picture">
+                     <img src="{{ post.image.url }}" alt="">  
+                </div>                                            
+            <img src="/static/img/heart.png" class="like_btn"/> 
+            </li>                         
             {% endfor %}
         </ul>
         {% endif %}
