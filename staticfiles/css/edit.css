@@ -1,0 +1,130 @@
+/* HEADER */
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+}
+
+.edit_content {
+    display: flex;
+    max-width: 600px;
+    margin: 0 auto;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+}
+
+.edit_flex {
+    display:inline-flex;
+}
+
+.edit_logo{
+    width: 25%;
+    padding: 5px;
+}
+
+.edit_header {
+    align-self: center;
+    margin-left: -180px;
+    font-weight: bold;
+}
+
+/* BODY */
+
+.edit_icon {
+    max-width: 60px;
+    max-height: 60px;
+    margin-left: 10px;
+}
+
+.edit_form{
+    display: flex;
+    max-width: 600px;
+    margin: 0 auto;
+    border-top: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    padding-top: 10px;  
+}
+
+.edit_name {
+    width: 90%;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    padding: 10px;
+    border: 0px;
+    background-color: #E6FeF7;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+}
+
+.edit_textarea{
+    width: 90%;
+    height: 100px;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    border-style: none;
+    font-size: 16px;
+    outline: none;
+    resize: none;
+}
+
+.edit_pic{
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.bottom_edit {
+    display: inline-flex;
+    gap: 20px;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.load_pic {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    align-self: center;
+    padding: 7px;
+    cursor: pointer;
+}
+
+.cancel-button {
+    padding: 10px 18px;
+    background-color: #08A0E9;
+    font-size: 15px;
+    border: #08A0E9;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#update {
+    padding: 10px 15px;
+    background-color: #08A0E9;
+    font-size: 15px;
+    border: #08A0E9;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer; 
+}
+
+.edit_ditch {
+    margin: 0 auto;
+    max-width: 600px;
+    height: 10px;
+    border-top: 1px solid #ccc;
+    background-color: rgb(247, 248, 248);
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+}
+
+@media screen and (max-width: 600px) {
+    
+}
