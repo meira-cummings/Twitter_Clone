@@ -17,7 +17,7 @@ class Post(models.Model):
         'Created Dateline', blank=True, auto_now_add=True
     )
     likes = models.PositiveIntegerField(
-        'like', default=0, blank=True, db_index=True, null=True
+        'like', default=0, blank=True, db_index=True
     )
     image = CloudinaryField(
         'image', blank=True, db_index=True

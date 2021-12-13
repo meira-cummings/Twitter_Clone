@@ -13,7 +13,7 @@
                 <input type="text" name="name" placeholder="Your Name" class="input" required />
                 <textarea name="body" placeholder="What's happening?" required></textarea>                
                 <div class="bottom-area">                    
-                    <input class="form-control" type="file" id="formFile" />                                      
+                    <input class="form-control" type="file" name="image" id="formFile" />                                      
                     <input type="submit" value="Tweet" id="tweet" />
                 </div>
             </form>
@@ -38,17 +38,19 @@
                     <p>{{post.body}}</p>
 
                     <div>
+                        {% if post.image.url %}
                         <img src="{{ post.image.url }}" class="pic"                         
                         style="max-width: 400px; max-height: 370px; border-radius: 15px;"
                         onclick="window.open(this.src, '_blank');">
+                        {% endif %}
                     </div>
 
                     <form id="likes-form" action="{% url 'like_post' post.pk %}" method='POST'>
                         {% csrf_token %}                                                                                                                          
-                        <button class="like-btn" type="submit", name="post_id", value="{{ post.id }}" href="post_id">
+                        <button id="like-btn" type="submit", name="post_id", value="{{ post.id }}" href="post_id">
                             <img src="{% static 'img/heart.png' %}" class="heart-btn">              
                         </button>
-                        {{post.likes}}                                          
+                        {{ post.likes }}                                          
                     </form>           
                 </div>
             </li>

@@ -19,10 +19,10 @@ def index(request):
 
         else:
             # No, Show Error
-            return HttpResponseRedirect(form.erros.as_json())
+            return HttpResponseRedirect(form.errors.as_json())
 
     # Get all posts, limit = 20
-    posts = Post.objects.all()[:20]
+    posts = Post.objects.all().order_by('-created_at')
 
     # Show
     return render(request, 'posts.html', 
@@ -39,7 +39,6 @@ def edit(request, post_id):
     post = Post.objects.get(id = post_id)
 
     if request.method == 'POST':
-        print("")
         form = PostForm(request.POST, request.FILES, instance=post)
     
         if form.is_valid():            
@@ -53,7 +52,7 @@ def edit(request, post_id):
     return render(request, 'edit.html',
                   {'post': post, 'form': form})
 
-def LikeView(request, id):
+def LikeView(request, post_id):
     post = Post.objects.get(id=post_id)
     new_value = post.likes + 1
     post.likes = new_value
