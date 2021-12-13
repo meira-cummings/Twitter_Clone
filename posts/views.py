@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Post
 from .forms import PostForm
@@ -54,12 +54,8 @@ def edit(request, post_id):
                   {'post': post, 'form': form})
 
 def LikeView(request, id):
-    post = get_object_or_404(Post, id=request.POST.get('post.id'))
-    is_liked = False
-    if post.likes.filter(id=request.user.id).exists():
-        post.likes.remove(request.user)
-        is_liked = False
-    else:
-        post.likes.add(request.user)
-        is_liked = True 
-    return HttpResponseRedirect(post.get_absolute_url())
+    post = Post.objects.get(id=post_id)
+    new_value = post.likes + 1
+    post.likes = new_value
+    post.save()
+    return HttpResponseRedirect('/') 

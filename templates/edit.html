@@ -11,31 +11,29 @@
     <section class="edit_form">
         <img src="/static/img/user.png" class="edit_icon" />
         <form action="{% url 'index' %}" method="POST" enctype="multipart/form-data"> 
-        {% csrf_token %}
-        <input 
-            type="text" 
-            name="name" 
-            placeholder="Your Name" 
-            value="{{post.name}}" 
-            class="edit_name" 
-        />
-        <textarea 
-            name="body" 
-            placeholder="{{post.body}}"
-            class="edit_textarea" 
-        ></textarea>
-        {% if post.image.url %}
-        <img src="{{ post.image.url }}" class="edit_pic" style="max-width: 400px; max-height: 370px; border-radius: 15px;">
-        {% endif %}
+            {% csrf_token %}
+            <input 
+                type="text" 
+                name="name" 
+                placeholder="Your Name" 
+                value="{{post.name}}" 
+                class="edit_name" 
+            />
+            <textarea 
+                name="body" 
+                placeholder="{{post.body}}"
+                class="edit_textarea" 
+            ></textarea>
+            {% if post.image.url %}
+            <img src="{{ post.image.url }}" class="edit_pic" style="max-width: 400px; max-height: 370px; border-radius: 15px;">
+            {% endif %}
     
-        <!--cancel and update-->
-        <div class="bottom_edit">    
-            <input type="file" name="image" class="load_pic">
-            <a class="cancel-anchor" href="/">
-                <input class="cancel-button" type='button' id='delete' value="Cancel">
-            </a>
-            <input id="update-button" type='submit' value="Update">
-        </div>                
+            <!--cancel and update-->
+            <div class="bottom_edit">    
+                <input type="file" name="image" class="load_pic">
+                <a class="cancel-anchor" href="/"><input class="cancel-button" type='button' id='delete' value="Cancel"></a>
+                <input class="update-button" type="submit" value="Update">
+            </div>                
         </form>       
     </section>
     <div class="edit_ditch"></div>

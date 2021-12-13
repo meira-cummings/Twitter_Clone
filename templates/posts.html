@@ -12,8 +12,8 @@
                 {% csrf_token %}
                 <input type="text" name="name" placeholder="Your Name" class="input" required />
                 <textarea name="body" placeholder="What's happening?" required></textarea>                
-                <div class="bottom-area">
-                    <input class="form-control" type="file" name="image">                   
+                <div class="bottom-area">                    
+                    <input class="form-control" type="file" id="formFile" />                                      
                     <input type="submit" value="Tweet" id="tweet" />
                 </div>
             </form>
@@ -41,18 +41,14 @@
                         <img src="{{ post.image.url }}" class="pic"                         
                         style="max-width: 400px; max-height: 370px; border-radius: 15px;"
                         onclick="window.open(this.src, '_blank');">
+                    </div>
 
-                        <form id="likes-form" action="{% url 'like' post.pk %}" method='POST'>
-                            {% csrf_token %}
-                            {% if is_liked %}
-                            <button class="btn btn-secondary" type="submit", name="post_id", value="{{ post.id }}" href="post_id">
-                                <img src="{% static 'img/liked_heart.png' %}" class="heart-btn">                    
-                            </button>
-                            {% else %}
-                                <button class="btn btn-primary" type="submit", name="post_id", value="{{ post.id }}" href="post_id">
-                                    <img src="{% static 'img/heart.png' %}" class="heart-btn">                    
-                                </button>
-                            {% endif %}                
+                    <form id="likes-form" action="{% url 'like_post' post.pk %}" method='POST'>
+                        {% csrf_token %}                                                                                                                          
+                        <button class="like-btn" type="submit", name="post_id", value="{{ post.id }}" href="post_id">
+                            <img src="{% static 'img/heart.png' %}" class="heart-btn">              
+                        </button>
+                        {{post.likes}}                                          
                     </form>           
                 </div>
             </li>

@@ -181,7 +181,7 @@ p {
     cursor: pointer;
 }
 
-.btn-primary, .btn-secondary {
+.like-btn {
     background-color: transparent;
     border: none;
 }

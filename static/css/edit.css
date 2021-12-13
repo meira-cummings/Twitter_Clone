@@ -104,7 +104,7 @@
     cursor: pointer;
 }
 
-#update-button {
+.update-button {
     padding: 10px 15px;
     background-color: #08A0E9;
     font-size: 15px;
