@@ -1,37 +1,44 @@
-{% extends "base.html" %} {%block content %} {% load static %} {% load cloudinary %}
+{% extends "base.html" %} {% block content %} {% load static %} {% load cloudinary %}
 
 <section class="edit_content">    
-    <img src="/static/img/techis-logo.png" class="edit_logo">      
-    <h1>Edit</h1>   
+    <div>
+        <a href="/" class="home_link"><img src="/static/img/techis-logo.png" class="edit_logo"></a>  
+    </div>
+    <h1 class="edit_header">Edit</h1>   
 </section>
 
 <section class="edit_body">
     <section class="edit_form">
         <img src="/static/img/user.png" class="edit_icon" />
-        <form action="" method="POST" enctype="multipart/form-data"> 
+        <form action="{% url 'index' %}" method="POST" enctype="multipart/form-data"> 
         {% csrf_token %}
-        <div><input type="text" name="name" placeholder="Your Name" class="edit_name" required /></div>
-        <div><textarea name="body" placeholder="What's happening?" class="edit_textarea" required></textarea></div>            
+        <input 
+            type="text" 
+            name="name" 
+            placeholder="Your Name" 
+            value="{{post.name}}" 
+            class="edit_name" 
+        />
+        <textarea 
+            name="body" 
+            placeholder="{{post.body}}"
+            class="edit_textarea" 
+        ></textarea>
+        {% if post.image.url %}
+        <img src="{{ post.image.url }}" class="edit_pic" style="max-width: 400px; max-height: 370px; border-radius: 15px;">
+        {% endif %}
     
         <!--cancel and update-->
-        <div class="bottom_edit">
-            <div class="edit_pic">
-                <img src="{{ post.image.url }}" style="max-width: 370px; max-height: 370px; border-radius: 15px;">       
-                <input type="file" name="image" class="load_pic">
-            </div>
-            <div><button class="cancel" type="submit">Cancel</button></div>
-            <div><button type="submit" class="update" value="Update">Update</button></div>
-        </div>              
+        <div class="bottom_edit">    
+            <input type="file" name="image" class="load_pic">
+            <a class="cancel-anchor" href="/">
+                <input class="cancel-button" type='button' id='delete' value="Cancel">
+            </a>
+            <input id="update-button" type='submit' value="Update">
+        </div>                
         </form>       
     </section>
     <div class="edit_ditch"></div>
 </section>
    
-<section>
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <script src="{% static 'js/posts.js' %}"></script>
-</section>
-    
-
-
 {% endblock %}

@@ -16,9 +16,12 @@ class Post(models.Model):
     created_at = models.DateTimeField(
         'Created Dateline', blank=True, auto_now_add=True
     )
-    likes = models.PositiveIntegerField(
-        'like', default=0, blank=True, db_index=True, null=True
+    likes = models.ManyToManyField(
+        User, related_name='likes', default=0
     )
     image = CloudinaryField(
         'image', blank=True, db_index=True
     )
+
+    def total_likes(self):
+        return self.likes.count()

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Post
 from .forms import PostForm
@@ -41,35 +41,25 @@ def edit(request, post_id):
     if request.method == 'POST':
         print("")
         form = PostForm(request.POST, request.FILES, instance=post)
-    # if form is valid
-        if form.is_valid():
-
-            # yes, save
-            form.save()
-        # Redirect to home
+    
+        if form.is_valid():            
+            form.save()        
             return HttpResponseRedirect('/')
 
-        else:
+        else:            
+            return HttpResponseRedirect(form.errors.as_json())
 
-            # No, Show Error
-            return HttpResponseRedirect(form.erros.as_json())
+    form = PostForm        
     return render(request, 'edit.html',
-                  {'edit': edit})
+                  {'post': post, 'form': form})
 
-def loadPost(request):
-    if request.method == 'POST':
-        form = PostForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('posts')
-
-    form = PostForm()
-    ctx = {'form': form}
-    return render(request, 'posts/posts.html', ctx)
-
-def LikeView(request, post_id):
-    post = Post.objects.get(id=post_id)
-    new_value = post.likes + 1
-    post.likes = new_value
-    post.save()
-    return HttpResponseRedirect('/')
+def LikeView(request, id):
+    post = get_object_or_404(Post, id=request.POST.get('post.id'))
+    is_liked = False
+    if post.likes.filter(id=request.user.id).exists():
+        post.likes.remove(request.user)
+        is_liked = False
+    else:
+        post.likes.add(request.user)
+        is_liked = True 
+    return HttpResponseRedirect(post.get_absolute_url())
