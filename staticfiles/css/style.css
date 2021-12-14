@@ -175,10 +175,12 @@ p {
 }
 
 .pic {
+    width: 370px;
+    height: 370px; 
     border: 1px solid #ccc;
-    border-radius: 10px;
+    border-radius: 15px;
     margin-bottom: 10px;
-    cursor: pointer;
+    cursor: pointer;  
 }
 
 #like-btn {

@@ -1,42 +1,70 @@
 {% extends "base.html" %} {% block content %} {% load static %} {% load cloudinary %}
+<!-- <div class="container">
+    <div class="main">
+        <div class="main-header">
+            <img src="/static/img/techis-logo.png" class="header-logo">
+            <h1>Home</h1>
+        </div>
+        <div class="tweet-post-form">
+            <div class="icon-area">
+                <img src="/static/img/user.png" class="my-icon">
+            </div>
+            <div class="input-area">
+                <form action="/" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input class="name-input" type="text" name="name" value="{{post.name}}" />
+                    <input class="textarea-input" name="body" value="{{post.body}}" />
+                    {% if post.image.url %}
+                    <img src="{{ post.image.url }}" id="pic">
+                    {% endif %}
 
-<section class="edit_content">    
-    <div>
-        <a href="/" class="home_link"><img src="/static/img/techis-logo.png" class="edit_logo"></a>  
+                    <div class="bottom-area">
+                        <div>
+                            <input type="file" name="image" class="load-pic">
+                        </div>
+                        <div>
+                            <a class="cancel-anchor" href="/"><input class="cancel-button" type='button' id='delete'
+                                    value="Cancel"></a>
+                            <input type="submit" value="Update" id="update">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="ditch"></div>
     </div>
-    <h1 class="edit_header">Edit</h1>   
-</section>
+</div> -->
 
-<section class="edit_body">
-    <section class="edit_form">
-        <img src="/static/img/user.png" class="edit_icon" />
-        <form action="" method="POST" enctype="multipart/form-data"> 
-            {% csrf_token %}
-            <input 
-                type="text" 
-                name="name" 
-                placeholder="Your Name" 
-                value="{{post.name}}" 
-                class="edit_name" 
-            />
-            <input
-                name="body" 
-                value="{{post.body}}"
-                class="edit_textarea" 
-            />
-            {% if post.image.url %}
-            <img src="{{ post.image.url }}" class="edit_pic" style="max-width: 400px; max-height: 370px; border-radius: 15px;">
-            {% endif %}
-    
-            <!--cancel and update-->
-            <div class="bottom_edit">    
-                <input type="file" name="image" class="load_pic">
-                <a class="cancel-anchor" href="/"><input class="cancel-button" type='button' id='delete' value="Cancel"></a>
-                <input type="submit" value="Update" id="update">
-            </div>             
-        </form>       
+<section class="main-edit">
+    <section class="second-edit-area">
+        <section class="edit_content">
+            <div>
+                <a href="/" class="home_link"><img src="/static/img/techis-logo.png" class="edit_logo"></a>
+            </div>
+            <h1 class="edit_header">Edit</h1>
+        </section>
+        <section class="edit_body">
+            <section class="edit_form">
+                <img src="/static/img/user.png" class="edit_icon" />
+                <form action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="text" name="name" placeholder="Your Name" value="{{post.name}}" class="edit_name" />
+                    <input name="body" value="{{post.body}}" class="edit_textarea" />
+                    {% if post.image.url %}
+                    <img src="{{ post.image.url }}" class="edit_pic">
+                    {% endif %}
+
+                    <div class="bottom_edit">
+                        <input type="file" name="image" class="load_pic">
+                        <a class="cancel-anchor" href="/"><input class="cancel-button" type='button' id='delete'
+                                value="Cancel"></a>
+                        <input type="submit" value="Update" id="update">
+                    </div>
+                </form>
+            </section>
+            <div class="edit_ditch"></div>
+        </section>
     </section>
-    <div class="edit_ditch"></div>
 </section>
-   
+ 
 {% endblock %}
